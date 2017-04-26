@@ -1,9 +1,11 @@
 angular.module('userProfiles').controller('MainController', function($scope, mainService) {
 
   $scope.getUsers = function() {
-  	$scope.users = mainService.getUsers();
+  	mainService.getUsers().then(function(results){
+      $scope.results = results;
+      $scope.users = results.data.data;
+    });
   }
-
 
   $scope.getUsers();
 
